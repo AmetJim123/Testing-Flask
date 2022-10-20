@@ -11,7 +11,7 @@ from werkzeug.urls import url_parse
 @app.route("/index")
 @login_required
 def index():
-    return render_template("index.html", title='Home Page', posts=posts)
+    return render_template("index.html", title='Home Page')
 
 @app.route("/login", methods = ['GET', 'POST'])
 def login():
@@ -47,7 +47,7 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Congratulations, you are now a registered user!')
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
     return render_template('register.html', title='Register', form=form)
 
 @app.route('/user/<username>')
